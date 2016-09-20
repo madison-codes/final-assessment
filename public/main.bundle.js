@@ -8195,7 +8195,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(473);
+	__webpack_require__(474);
 	
 	(0, _reactDom.render)(_react2.default.createElement(_Application2.default, null), document.getElementById('application'));
 
@@ -29403,6 +29403,10 @@
 	
 	var _DisplayScore2 = _interopRequireDefault(_DisplayScore);
 	
+	var _Button = __webpack_require__(473);
+	
+	var _Button2 = _interopRequireDefault(_Button);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29434,8 +29438,7 @@
 	    }
 	  }, {
 	    key: 'handleSubmit',
-	    value: function handleSubmit(e) {
-	      e.preventDefault();
+	    value: function handleSubmit() {
 	      var newestScore = (0, _ScoreWord2.default)(this.state.word, this.state.mult);
 	      var sumScore = this.state.score + newestScore;
 	      this.setState({ score: sumScore });
@@ -29469,16 +29472,7 @@
 	            },
 	            value: this.state.word
 	          }),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              disabled: !this.state.word,
-	              onClick: function onClick(e) {
-	                return _this2.handleSubmit(e);
-	              }
-	            },
-	            'Submit'
-	          )
+	          _react2.default.createElement(_Button2.default, { word: this.state.word, submit: this.handleSubmit() })
 	        ),
 	        _react2.default.createElement(_DisplayScore2.default, { score: this.state.score })
 	      );
@@ -29588,13 +29582,45 @@
 /* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports.default = function (_ref) {
+	  var word = _ref.word;
+	  var handleSubmit = _ref.handleSubmit;
+	
+	  return _react2.default.createElement(
+	    'button',
+	    {
+	      disabled: !word,
+	      onClick: (function (e) {
+	        return e.preventDefault();
+	      }, handleSubmit())
+	    },
+	    'Submit'
+	  );
+	};
+	
+	var _react = __webpack_require__(299);
+	
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 474 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(474);
+	var content = __webpack_require__(475);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(476)(content, {});
+	var update = __webpack_require__(477)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29611,10 +29637,10 @@
 	}
 
 /***/ },
-/* 474 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(475)();
+	exports = module.exports = __webpack_require__(476)();
 	// imports
 	
 	
@@ -29625,7 +29651,7 @@
 
 
 /***/ },
-/* 475 */
+/* 476 */
 /***/ function(module, exports) {
 
 	/*
@@ -29681,7 +29707,7 @@
 
 
 /***/ },
-/* 476 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
